@@ -1,3 +1,3 @@
 #pragma once
 
-bool get_lim(int pin_num);
+bool GetLim(int pin_num);

@@ -42,10 +42,10 @@ void Trapezoid(void (*func)(float),float max_value,unsigned int delay_time){
 		}
 		(*func)(0);
 	}
-	printf("daikei\n");
+	printf("Trapezoid completed\n");
 }
 
-void Trapezoid_fh(void (*func)(float),float max_value){
+void TrapezoidFh(void (*func)(float),float max_value){
 	double value;
 	if(func==NULL){
 		printf("func NULL\n");
@@ -69,10 +69,10 @@ void Trapezoid_fh(void (*func)(float),float max_value){
 			(*func)(value);
 		}
 	}
-	printf("daikei_fh\n");
+	printf("Trapezoid first half\n");
 }
 
-void Trapezoid_sh(void (*func)(float),float max_value){
+void TrapezoidSh(void (*func)(float),float max_value){
 	double value;
 	if(func==NULL){
 		printf("func NULL\n");
@@ -98,7 +98,7 @@ void Trapezoid_sh(void (*func)(float),float max_value){
 		}
 		(*func)(0);
 	}
-	printf("daikei_sh\n");
+	printf("Trapezoid second half\n");
 }
 
 void Trapezoid_sp(void (*func)(float),float max_value){
@@ -125,5 +125,5 @@ void Trapezoid_sp(void (*func)(float),float max_value){
 			(*func)(value);
 		}
 	}
-	printf("daikei_sp\n");
+	printf("Trapezoid special\n");
 }

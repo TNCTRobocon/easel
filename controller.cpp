@@ -1,12 +1,12 @@
 #include "config.hpp"
 //#include "controller.hpp"
 
-void deinit_con(){
+void DeinitCon(){
 		close(fd);
 		puts("safity exit");
 }
 
-void setupcon(){
+void SetupCon(){
 	fd = open("/dev/input/js0",O_RDONLY);
 	errnum=errno;
 	if(fd<0){
@@ -14,10 +14,10 @@ void setupcon(){
 	}else{
 		printf("open file\n");
 	}
-	atexit(deinit_con);
+	atexit(DeinitCon);
 }
 
-unsigned char getcon(){
+unsigned char GetCon(){
 	read(fd,&joysta,sizeof(joysta));
 	switch(joysta.type & 0x7f){
 			case JS_EVENT_BUTTON:

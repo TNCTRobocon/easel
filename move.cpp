@@ -13,10 +13,10 @@ void Front(float value){
 	}else{
 		printf("flont %.2lf\n",value);
 	}
-  motordrive(tirerf,sign_rf*value);
-  motordrive(tirerb,sign_rb*value);
-  motordrive(tirelf,sign_lf*value);
-  motordrive(tirelb,sign_lb*value);
+  MotorDrive(tirerf,sign_rf*value);
+  MotorDrive(tirerb,sign_rb*value);
+  MotorDrive(tirelf,sign_lf*value);
+  MotorDrive(tirelb,sign_lb*value);
 }
 
 void Back(float value){
@@ -25,10 +25,10 @@ void Back(float value){
 	}else{
 		printf("back %.2lf\n",value);
 	}
-  motordrive(tirerf,-sign_rf*value);
-  motordrive(tirerb,-sign_rb*value);
-  motordrive(tirelf,-sign_lf*value);
-  motordrive(tirelb,-sign_lb*value);
+  MotorDrive(tirerf,-sign_rf*value);
+  MotorDrive(tirerb,-sign_rb*value);
+  MotorDrive(tirelf,-sign_lf*value);
+  MotorDrive(tirelb,-sign_lb*value);
 }
 
 void Right(float value){
@@ -37,10 +37,10 @@ void Right(float value){
 	}else{
 		printf("right %.2lf\n",value);
 	}
-  motordrive(tirerf,-sign_rf*value);
-  motordrive(tirerb,sign_rb*value);
-  motordrive(tirelf,sign_lf*value);
-  motordrive(tirelb,-sign_lb*value);
+  MotorDrive(tirerf,-sign_rf*value);
+  MotorDrive(tirerb,sign_rb*value);
+  MotorDrive(tirelf,sign_lf*value);
+  MotorDrive(tirelb,-sign_lb*value);
 }
 
 void Left(float value){
@@ -49,10 +49,10 @@ void Left(float value){
 	}else{
 		printf("left %.2lf\n",value);
 	}
-  motordrive(tirerf,sign_rf*value);
-  motordrive(tirerb,-sign_rb*value);
-  motordrive(tirelf,-sign_lf*value);
-  motordrive(tirelb,sign_lb*value);
+  MotorDrive(tirerf,sign_rf*value);
+  MotorDrive(tirerb,-sign_rb*value);
+  MotorDrive(tirelf,-sign_lf*value);
+  MotorDrive(tirelb,sign_lb*value);
 }
 
 void TurnRight(float value){
@@ -61,10 +61,10 @@ void TurnRight(float value){
 	}else{
 		printf("turn-right %.2lf\n",value);
 	}
-  motordrive(tirerf,-sign_rf*value);
-  motordrive(tirerb,-sign_rb*value);
-  motordrive(tirelf,sign_lf*value);
-  motordrive(tirelb,sign_lb*value);
+  MotorDrive(tirerf,-sign_rf*value);
+  MotorDrive(tirerb,-sign_rb*value);
+  MotorDrive(tirelf,sign_lf*value);
+  MotorDrive(tirelb,sign_lb*value);
 }
 
 void TurnLeft(float value){
@@ -73,10 +73,10 @@ void TurnLeft(float value){
 	}else{
 		printf("turn-left %.2lf\n",value);
 	}
-  motordrive(tirerf,sign_rf*value);
-  motordrive(tirerb,sign_rb*value);//
-  motordrive(tirelf,-sign_lf*value);
-  motordrive(tirelb,-sign_lb*value);
+  MotorDrive(tirerf,sign_rf*value);
+  MotorDrive(tirerb,sign_rb*value);//
+  MotorDrive(tirelf,-sign_lf*value);
+  MotorDrive(tirelb,-sign_lb*value);
 }
 
 void Stop(float value){
@@ -86,8 +86,8 @@ void Stop(float value){
 	}else{
 		printf("stop %.2lf\n",value);
 	}
-  motordrive(tirerf,value);
-  motordrive(tirerb,value);
-  motordrive(tirelf,value);
-  motordrive(tirelb,value);
+  MotorDrive(tirerf,value);
+  MotorDrive(tirerb,value);
+  MotorDrive(tirelf,value);
+  MotorDrive(tirelb,value);
 }

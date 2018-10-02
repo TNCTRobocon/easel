@@ -1,7 +1,7 @@
 #include "config.hpp"
 
 
-void air_up(){
+void AirUp(){//open [sel 32  1][sel 33  1,3,5] close [sel 32  2,3,4,5,6][sel 33  2,4,6]
   serialPrintf(srid,"sel 32\r");
   serialPrintf(srid,"close 2 3 4\r");
   serialPrintf(srid,"sel 32\r");
@@ -15,7 +15,7 @@ void air_up(){
   printf("air_up\n");
 }
 
-void air_down(){
+void AirDown(){//open [sel 32  2][sel 33  2,4,6] close [sel 32  1,3,4,5,6][sel 33  1,3,5]
   serialPrintf(srid,"sel 33\r");
   serialPrintf(srid,"close 1 3 5\r");
   serialPrintf(srid,"sel 33\r");
@@ -29,7 +29,7 @@ void air_down(){
   printf("air_down\n");
 }
 
-void air_clear(){
+void AirClear(){
   serialPrintf(srid,"sel 32\r");
   serialPrintf(srid,"clear\r");
   serialPrintf(srid,"sel 33\r");

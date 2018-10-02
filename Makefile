@@ -2,7 +2,7 @@
 
 # Complier Options
 CC ?= gcc
-CFLAGS ?= -Wall -std=c17 -g -O0 -pipe
+CFLAGS ?= -Wall -g -O0 -pipe
 CXX ?= g++
 INC ?= -I.
 LDFLAGS ?= -lm -L. -lwiringPi

@@ -1,7 +1,7 @@
 //#include "motor.hpp"
 #include "config.hpp"
 
-void motordrive(int id,float value){
+void MotorDrive(int id,float value){
 	if(spflag==1){
 		printf("mc no\n");
 		//mcm(id,(int)(value*200));

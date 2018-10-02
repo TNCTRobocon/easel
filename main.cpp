@@ -1,4 +1,4 @@
-#include "config.hpp"
+TrapezoidSp#include "config.hpp"
 
 int reccon[9];
 int srid;
@@ -26,7 +26,7 @@ int main(){
 
 
 	setupUART();
-	setupcon();
+	SetupCon();
 	read(fd,&joysta,sizeof(joysta));
 	ebuf=joysta;
 	pinMode(sonic_1,OUTPUT);
@@ -43,7 +43,7 @@ int main(){
 //#if 0
 
 	while(1){
-		switch(getcon()){
+		switch(GetCon()){
 			case BACK: //リセット
 				if(reccon[BUTTON]&(1<<6)){
 					serialPrintf(srid,"sel 0\r");
@@ -104,28 +104,28 @@ int main(){
 				    ss << "sel 33\r";
 						Write(ss.str());*/
 #if 0
-						if(get_lim(lim_1)){
+						if(GetLim(lim_1)){
 							printf("lim_1\n");
 						}
-						if(get_lim(lim_2)){
+						if(GetLim(lim_2)){
 							printf("lim_2\n");
 						}
-						if(get_lim(lim_3)){
+						if(GetLim(lim_3)){
 							printf("lim_3\n");
 						}
-						if(get_lim(lim_4)){
+						if(GetLim(lim_4)){
 							printf("lim_4\n");
 						}
-						if(get_lim(lim_5)){
+						if(GetLim(lim_5)){
 							printf("lim_5\n");
 						}
-						if(get_lim(lim_6)){
+						if(GetLim(lim_6)){
 							printf("lim_6\n");
 						}
-						if(get_lim(lim_7)){
+						if(GetLim(lim_7)){
 							printf("lim_7\n");
 						}
-						if(get_lim(lim_8)){
+						if(GetLim(lim_8)){
 							printf("lim_8\n");
 						}
 						if(GetSonic(sonic_1)<0.001000){
@@ -146,7 +146,7 @@ int main(){
 						printf("b\n");
 						*/
             //Trapezoid(Right,0.2,500);
-						air_up();
+						AirUp();
 						printf("b\n");
           }else{
           }
@@ -155,7 +155,7 @@ int main(){
         case X: //左
           if(reccon[BUTTON]&(1<<2)){//down
             //Trapezoid(Left,0.2,500);
-						air_down();
+						AirDown();
 						printf("x\n");
           }else{
           }
@@ -164,7 +164,7 @@ int main(){
         case Y: //前
           if(reccon[BUTTON]&(1<<3)){
             //Trapezoid(Front,0.2,500);
-						air_clear();
+						AirClear();
 						printf("y\n");
           }else{
           }
@@ -230,14 +230,14 @@ int main(){
 					Stop(0);
 					delay(1000);
 					Front(0.15);
-					//while(!get_lim(lim_5) && !get_lim(lim_6) && !get_lim(lim_7) && !get_lim(lim_8));
+					//while(!GetLim(lim_5) && !GetLim(lim_6) && !GetLim(lim_7) && !GetLim(lim_8));
 					delay(100);
 					Stop(0);
-					Trapezoid_fh(Back,0.3);
+					TrapezoidFh(Back,0.3);
 					while(GetSonic(sonic_1)>0.002000);
-					//Trapezoid_sp(Back,0.3);
-					Trapezoid_sh(Back,0.3);
-					//while(!get_lim(lim_1) && !get_lim(lim_2) && !get_lim(lim_3) && !get_lim(lim_4));
+					//TrapezoidSp(Back,0.3);
+					TrapezoidSh(Back,0.3);
+					//while(!GetLim(lim_1) && !GetLim(lim_2) && !GetLim(lim_3) && !GetLim(lim_4));
 					Stop(0);
 					delay(1000);
 					Trapezoid(Right,0.4,100);
@@ -252,9 +252,9 @@ int main(){
 					Trapezoid(TurnLeft,0.4,500);
 					Stop(0);
 					delay(1000);
-					Trapezoid_fh(Back,0.2);
+					TrapezoidFh(Back,0.2);
 					while(GetSonic(sonic_1)>0.005000);
-					Trapezoid_sh(Back,0.2);
+					TrapezoidSh(Back,0.2);
 					Stop(0);
 					#endif
 				}else{}

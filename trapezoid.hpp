@@ -1,6 +1,6 @@
 #pragma once
 
 void Trapezoid(void (*)(float),float,unsigned int);
-void Trapezoid_fh(void (*)(float),float);
-void Trapezoid_sh(void (*)(float),float);
-void Trapezoid_sp(void (*)(float),float);
+void TrapezoidFh(void (*)(float),float);
+void TrapezoidSh(void (*)(float),float);
+void TrapezoidSp(void (*)(float),float);
