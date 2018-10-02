@@ -30,7 +30,9 @@ int main(){
 	read(fd,&joysta,sizeof(joysta));
 	ebuf=joysta;
 	pinMode(sonic_1,OUTPUT);
+	digitalWrite(sonic_1,0);
 	pinMode(sonic_2,OUTPUT);
+	digitalWrite(sonic_2,0);
 	pinMode(lim_1,INPUT);
 	pinMode(lim_2,INPUT);
 	pinMode(lim_3,INPUT);
