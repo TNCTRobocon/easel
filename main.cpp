@@ -103,7 +103,7 @@ int main(){
 						int a = 16;
 				    ss << "sel 33\r";
 						Write(ss.str());*/
-#if 0
+//#if 0
 						if(get_lim(lim_1)){
 							printf("lim_1\n");
 						}
@@ -134,7 +134,7 @@ int main(){
 						if(GetSonic(sonic_2)<0.001000){
 							printf("sonic_2\n");
 						}
-						#endif
+//						#endif
           }else{
           }
           break;

@@ -12,16 +12,16 @@ void Trapezoid(void (*func)(float),float max_value,unsigned int delay_time){
 		printf("max_value low\n");
 		return;
 	}else if(max_value<0.3){
-		for(value = 0.1;value<max_value;value+=0.0003){
+		for(value = 0.15;value<max_value;value+=0.0003){
 			(*func)(value);
 		}
 		delay(delay_time);
-		for(;value>0.1;value-=0.0003){
+		for(;value>0.14;value-=0.0003){
 			(*func)(value);
 		}
 		(*func)(0);
 	}else{
-		for(value = 0.1;value<0.3;value+=0.0006){
+		for(value = 0.15;value<0.3;value+=0.0006){
 			(*func)(value);
 		}
 		for(;value<max_value-0.2;value+=0.0027){
@@ -37,7 +37,7 @@ void Trapezoid(void (*func)(float),float max_value,unsigned int delay_time){
 		for(;value>0.3;value-=0.0027){
 			(*func)(value);
 		}
-		for(;value>0.1;value-=0.0006){
+		for(;value>0.14;value-=0.0006){
 			(*func)(value);
 		}
 		(*func)(0);
@@ -55,11 +55,11 @@ void Trapezoid_fh(void (*func)(float),float max_value){
 		printf("max_value low\n");
 		return;
 	}else if(max_value<0.3){
-		for(value = 0.1;value<max_value;value+=0.0003){
+		for(value = 0.15;value<max_value;value+=0.0003){
 			(*func)(value);
 		}
 	}else{
-		for(value = 0.1;value<0.3;value+=0.0006){
+		for(value = 0.15;value<0.3;value+=0.0006){
 			(*func)(value);
 		}
 		for(;value<max_value-0.2;value+=0.0027){
@@ -93,7 +93,7 @@ void Trapezoid_sh(void (*func)(float),float max_value){
 		for(;value>0.3;value-=0.0027){
 			(*func)(value);
 		}
-		for(;value>0.1;value-=0.0006){
+		for(;value>0.14;value-=0.0006){
 			(*func)(value);
 		}
 		(*func)(0);

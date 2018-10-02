@@ -5,7 +5,7 @@
 #define sign_rf -1 //lb
 #define sign_lf 1//rf
 #define sign_rb -1//lf
-#define sign_lb -1 //rb
+#define sign_lb 1 //rb
 
 void Front(float value){
   if(spflag==1){

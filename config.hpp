@@ -1,10 +1,5 @@
 #pragma once
 
-
-
-
-
-
 #define tirerf 16 //タイヤ右前
 #define tirelf 17 //タイヤ左前
 #define tirerb 18 //タイヤ右後
