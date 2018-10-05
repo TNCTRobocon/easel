@@ -11,6 +11,8 @@ float dttire=dtmid;
 bool spflag{false};
 int fd;
 
+void PinSetup();
+
 int main(){
 	int i = 0;
 	errno=0;
@@ -29,18 +31,8 @@ int main(){
 	setupcon();
 	read(fd,&joysta,sizeof(joysta));
 	ebuf=joysta;
-	pinMode(sonic_1,OUTPUT);
-	digitalWrite(sonic_1,0);
-	pinMode(sonic_2,OUTPUT);
-	digitalWrite(sonic_2,0);
-	pinMode(lim_1,INPUT);
-	pinMode(lim_2,INPUT);
-	pinMode(lim_3,INPUT);
-	pinMode(lim_4,INPUT);
-	pinMode(lim_5,INPUT);
-	pinMode(lim_6,INPUT);
-	pinMode(lim_7,INPUT);
-	pinMode(lim_8,INPUT);
+
+	PinSetup();
 
 //#if 0
 
@@ -96,7 +88,7 @@ int main(){
 
         case A: //後
           if(reccon[BUTTON]&(1<<0)){
-
+						//Trapezoid_sp(Back,0.5);
             //Trapezoid(Back,0.2,500);
 						//while(GetSonic(front_sonic)>0.000300);
 						//serialPrintf(srid,"rst\r");
@@ -129,13 +121,13 @@ int main(){
 						}
 						if(get_lim(lim_8)){
 							printf("lim_8\n");
-						}
+						}/*
 						if(GetSonic(sonic_1)<0.001000){
 							printf("sonic_1\n");
 						}
 						if(GetSonic(sonic_2)<0.001000){
 							printf("sonic_2\n");
-						}
+						}*/
 //						#endif
           }else{
           }
@@ -224,7 +216,7 @@ int main(){
 
 			case START: //
 				if(reccon[BUTTON]&(1<<7)){
-					//#if 0
+					#if 0//robohidari
 					Trapezoid(Front,0.4,3000);
 					Stop(0);
 					delay(1000);
@@ -232,21 +224,51 @@ int main(){
 					Stop(0);
 					delay(1000);
 					Front(0.15);
-					//while(!get_lim(lim_5) && !get_lim(lim_6) && !get_lim(lim_7) && !get_lim(lim_8));
-					delay(100);
-					Stop(0);
-					Trapezoid_fh(Back,0.3);
-					while(GetSonic(sonic_1)>0.002000);
-					//Trapezoid_sp(Back,0.3);
-					Trapezoid_sh(Back,0.3);
-					//while(!get_lim(lim_1) && !get_lim(lim_2) && !get_lim(lim_3) && !get_lim(lim_4));
+					while(!get_lim(lim_5) && !get_lim(lim_6) && !get_lim(lim_7) && !get_lim(lim_8));
 					Stop(0);
 					delay(1000);
+					Trapezoid_fh(Back,0.3);
+					while(GetSonic(sonic_1)>0.003000);
+					Trapezoid_sp(Back,0.3);
+					//Trapezoid_sh(Back,0.3);
+					while(!get_lim(lim_1) && !get_lim(lim_2) && !get_lim(lim_3) && !get_lim(lim_4));
+					Stop(0);
+					delay(1000);
+					Front(0.15);
+					delay(500);
 					Trapezoid(Right,0.4,100);
 					delay(1000);
 					Trapezoid(Left,0.4,100);
 
-					//#endif
+					#endif
+
+					Trapezoid(Front,0.4,3500);
+					Stop(0);
+					delay(1000);
+					Trapezoid(TurnLeft,0.4,340);
+					Stop(0);
+					delay(1000);
+					Front(0.15);
+					while(( !get_lim(lim_5) && !get_lim(lim_6) ) || ( !get_lim(lim_7) && !get_lim(lim_8) ));
+					Stop(0);
+					delay(1000);
+					Trapezoid_fh(Back,0.3);
+					while(GetSonic(sonic_1)>0.003500 && GetSonic(sonic_1)>0.003500);
+					Trapezoid_sp(Back,0.3);
+					//Trapezoid_sh(Back,0.3);
+					while(!get_lim(lim_1) && !get_lim(lim_2) && !get_lim(lim_3) && !get_lim(lim_4));
+					Stop(0);
+					delay(1000);
+					Front(0.15);
+					delay(700);
+					Stop(0);
+					delay(1000);
+					air_up();
+					delay(3000);
+					Trapezoid(Right,0.4,100);
+					delay(5000);
+					Trapezoid(Left,0.4,200);
+
 					#if 0
 					Trapezoid(Front,0.2,2000);
 					Stop(0);
@@ -279,4 +301,19 @@ int main(){
 		}
 	}
 //	#endif
+}
+
+void PinSetup(){
+	pinMode(sonic_1,OUTPUT);
+	digitalWrite(sonic_1,0);
+	pinMode(sonic_2,OUTPUT);
+	digitalWrite(sonic_2,0);
+	pinMode(lim_1,INPUT);
+	pinMode(lim_2,INPUT);
+	pinMode(lim_3,INPUT);
+	pinMode(lim_4,INPUT);
+	pinMode(lim_5,INPUT);
+	pinMode(lim_6,INPUT);
+	pinMode(lim_7,INPUT);
+	pinMode(lim_8,INPUT);
 }

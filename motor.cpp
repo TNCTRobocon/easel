@@ -4,7 +4,7 @@
 void motordrive(int id,float value){
 	if(spflag==1){
 		printf("mc no\n");
-		mcm(id,(int)(value*200));
+		//mcm(id,(int)(value*200));
 	}else{
 		dtm(id,value);
 	}
