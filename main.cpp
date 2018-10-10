@@ -33,6 +33,7 @@ int main(){
 	ebuf=joysta;
 
 	PinSetup();
+	air_clear();
 
 //#if 0
 
@@ -49,97 +50,18 @@ int main(){
 					printf("completed\n");
 				}
 				break;
-#if 0
-			case LT: //左旋回
-		  case RT: //右旋回
-			case DX: //移動
-			case DY: //移動
-			if(reccon[RT] > highest){//RT_右旋回
-				printf("right-turn\n");
-			}else if(reccon[RT] < lowest){
-					if(reccon[LT] > highest){//LT_左旋回
-						printf("left-turn\n");
-					}else if(reccon[LT] < lowest){
-							if(reccon[DX] < lowest){//LSX_左進
-								printf("left\n");
-							}else if(reccon[DX] > highest){//LSX_右進
-								printf("right\n");
-							}else{
-									if(reccon[DY] < lowest){//LSY_前進
-										printf("flont\n");
-									}else if(reccon[DY] > highest){//LSY_後進
-										printf("back\n");
-									}else{//停止
-										printf("stop\n");
-									}
-							}
-					}
-			}
-				break;
-			case RSX: //
-				break;
-			case RSY: //
-				break;
-			case LSX: //
-				break;
-			case LSY: //
-				break;
-#endif
 
         case A: //後
           if(reccon[BUTTON]&(1<<0)){
-						//Trapezoid_sp(Back,0.5);
-            //Trapezoid(Back,0.2,500);
-						//while(GetSonic(front_sonic)>0.000300);
-						//serialPrintf(srid,"rst\r");
-
-						/*std::stringstream ss;
-						int a = 16;
-				    ss << "sel 33\r";
-						Write(ss.str());*/
-//#if 0
-						if(get_lim(lim_1)){
-							printf("lim_1\n");
-						}
-						if(get_lim(lim_2)){
-							printf("lim_2\n");
-						}
-						if(get_lim(lim_3)){
-							printf("lim_3\n");
-						}
-						if(get_lim(lim_4)){
-							printf("lim_4\n");
-						}
-						if(get_lim(lim_5)){
-							printf("lim_5\n");
-						}
-						if(get_lim(lim_6)){
-							printf("lim_6\n");
-						}
-						if(get_lim(lim_7)){
-							printf("lim_7\n");
-						}
-						if(get_lim(lim_8)){
-							printf("lim_8\n");
-						}/*
-						if(GetSonic(sonic_1)<0.001000){
-							printf("sonic_1\n");
-						}
-						if(GetSonic(sonic_2)<0.001000){
-							printf("sonic_2\n");
-						}*/
-//						#endif
+						Front(0.15);
+						while(GetSonic(sonic_1)<0.000380);
+						Stop(0);
           }else{
           }
           break;
 
         case B: //右
           if(reccon[BUTTON]&(1<<1)){//up
-						/*printf("a\n");
-						while(digitalRead(rbl_lim)==0);
-						printf("b\n");
-						*/
-            //Trapezoid(Right,0.2,500);
 						air_up();
 						printf("b\n");
           }else{
@@ -148,7 +70,6 @@ int main(){
 
         case X: //左
           if(reccon[BUTTON]&(1<<2)){//down
-            //Trapezoid(Left,0.2,500);
 						air_down();
 						printf("x\n");
           }else{
@@ -157,7 +78,6 @@ int main(){
 
         case Y: //前
           if(reccon[BUTTON]&(1<<3)){
-            //Trapezoid(Front,0.2,500);
 						air_clear();
 						printf("y\n");
           }else{
@@ -167,7 +87,6 @@ int main(){
         case LB: //前
           if(reccon[BUTTON]&(1<<4)){
 						TurnLeft(0.4);
-            //Trapezoid(TurnLeft,0.4,500);
           }else{
 						Stop(0);
           }
@@ -176,7 +95,6 @@ int main(){
         case RB: //前
           if(reccon[BUTTON]&(1<<5)){
 						TurnRight(0.4);
-            //Trapezoid(TurnRight,0.4,500);
           }else{
 						Stop(0);
           }
@@ -191,12 +109,10 @@ int main(){
 								printf("left-turn\n");
 							}else if(reccon[LT] < lowest){
 									if(reccon[DX] < lowest){//LSX_左進
-										//Trapezoid(Left,0.4,500);
-										Left(0.30);
+										Left(0.15);
 										printf("left\n");
 									}else if(reccon[DX] > highest){//LSX_右進
-										//Trapezoid(Right,0.4,500);
-										Right(0.30);
+										Right(0.15);
 										printf("right\n");
 									}else{
 											if(reccon[DY] < lowest){//LSY_前進
@@ -216,71 +132,113 @@ int main(){
 
 			case START: //
 				if(reccon[BUTTON]&(1<<7)){
-					#if 0//robohidari
-					Trapezoid(Front,0.4,3000);
-					Stop(0);
-					delay(1000);
-					Trapezoid(TurnRight,0.4,600);
-					Stop(0);
-					delay(1000);
-					Front(0.15);
-					while(!get_lim(lim_5) && !get_lim(lim_6) && !get_lim(lim_7) && !get_lim(lim_8));
-					Stop(0);
-					delay(1000);
-					Trapezoid_fh(Back,0.3);
-					while(GetSonic(sonic_1)>0.003000);
-					Trapezoid_sp(Back,0.3);
-					//Trapezoid_sh(Back,0.3);
-					while(!get_lim(lim_1) && !get_lim(lim_2) && !get_lim(lim_3) && !get_lim(lim_4));
-					Stop(0);
-					delay(1000);
-					Front(0.15);
-					delay(500);
-					Trapezoid(Right,0.4,100);
-					delay(1000);
-					Trapezoid(Left,0.4,100);
+					/*robot 左*/
 
-					#endif
+					//1.二段テーブルまで移動
 
-					Trapezoid(Front,0.4,3500);
+					//ちょっと右に進み
+					Right(0.15);
+					delay(2000);
+					//止まる
 					Stop(0);
-					delay(1000);
-					Trapezoid(TurnLeft,0.4,340);
+					delay(200);
+					//前進して
+					Trapezoid(Front,0.4,4500);
+					//止まる
 					Stop(0);
-					delay(1000);
+					delay(100);
+					//左旋回して
+					Trapezoid(TurnLeft,0.4,370);
+					//止まる
+					Stop(0);
+					delay(100);
+					//壁に向かって前進して
 					Front(0.15);
+					//壁に当たったら
 					while(( !get_lim(lim_5) && !get_lim(lim_6) ) || ( !get_lim(lim_7) && !get_lim(lim_8) ));
+					//止まる
 					Stop(0);
-					delay(1000);
-					Trapezoid_fh(Back,0.3);
-					while(GetSonic(sonic_1)>0.003500 && GetSonic(sonic_1)>0.003500);
-					Trapezoid_sp(Back,0.3);
-					//Trapezoid_sh(Back,0.3);
-					while(!get_lim(lim_1) && !get_lim(lim_2) && !get_lim(lim_3) && !get_lim(lim_4));
+					delay(100);
+					//二段テーブルに向かって後進して
+					Trapezoid_fh(Back,0.4);
+					//二段テーブルに近づいたら
+					while(GetSonic(sonic_1)>0.004000 && GetSonic(sonic_2)>0.004000);
+					//減速
+					Trapezoid_sp(Back,0.4);
+					//二段テーブルに当たったら
+					while(( !get_lim(lim_1) || !get_lim(lim_2) ) && ( !get_lim(lim_3) || !get_lim(lim_4) ));
+					//ちょっと二段テーブルに押し付けて
+					delay(100);
+					//止まる
 					Stop(0);
-					delay(1000);
-					Front(0.15);
-					delay(700);
-					Stop(0);
-					delay(1000);
-					air_up();
-					delay(3000);
-					Trapezoid(Right,0.4,100);
-					delay(5000);
-					Trapezoid(Left,0.4,200);
+					delay(200);
 
-					#if 0
-					Trapezoid(Front,0.2,2000);
+					//2.ゼロ点合わせ
+
+					//二段テーブルから遠ざかるように前進
+					Front(0.15);
+					//ある程度離れたら
+					while(GetSonic(sonic_2)<0.000380);
+					//止まる
 					Stop(0);
-					delay(1000);
-					Trapezoid(TurnLeft,0.4,500);
+					delay(100);
+					//左に進み
+					Left(0.15);
+					//右の超音波センサが反応したら
+					while(GetSonic(sonic_1)>0.002000);
+					//止まる
 					Stop(0);
-					delay(1000);
-					Trapezoid_fh(Back,0.2);
-					while(GetSonic(sonic_1)>0.005000);
-					Trapezoid_sh(Back,0.2);
+					delay(200);
+
+					//3.左射出
+
+					//右に進み
+					Right(0.15);
+					delay(4000);
+					//止まる
 					Stop(0);
-					#endif
+					delay(400);
+					//エアーで手動を上げる
+					air_up();
+					//待つ  //この間に手動は左射出
+					delay(3500);
+
+					//4.ゼロ点合わせ
+
+					//左に進み
+					Left(0.15);
+					//右の超音波センサが反応したら
+					while(GetSonic(sonic_1)>0.002000);
+
+					//5.右射出
+
+					//少し左に進み
+					Left(0.15);
+					delay(3000);
+					//止まる
+					Stop(0);
+					//待つ  //この間に手動は右射出
+					delay(3500);
+
+					//6.ゼロ点合わせ
+
+					//右に進み
+					Right(0.15);
+					//右の超音波センサが反応しなくなったら
+					while(GetSonic(sonic_1)<0.002000);
+					//止まる
+					Stop(0);
+					delay(1200);
+
+					//7.振り子＆なだれ
+
+					//左に進み
+					Left(0.15);
+					delay(400);
+					//止まる
+					Stop(0);
+					//この後に手動は振り子、なだれ
+
 				}else{}
 
 			break;
