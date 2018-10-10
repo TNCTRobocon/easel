@@ -35,6 +35,6 @@ double GetSonic(int pin_num){
 		delay(70);
 		_time = Sonic(pin_num);
 	}
-	printf("%lf\n",_time);
+	//printf("%lf\n",_time);
 	return _time;
 }
