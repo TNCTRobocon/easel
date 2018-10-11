@@ -1,4 +1,3 @@
-//#include "sonic.hpp"
 #include "config.hpp"
 
 double Sonic(int pin_num){

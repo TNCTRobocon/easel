@@ -1,9 +1,8 @@
 #include "config.hpp"
-//#include "controller.hpp"
 
 void deinit_con(){
 		close(fd);
-		puts("safity exit");
+		puts("controller safity exit");
 }
 
 void setupcon(){

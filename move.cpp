@@ -1,6 +1,4 @@
 #include "config.hpp"
-//#include "move.hpp"
-#include <stdio.h>
 
 #define sign_rf -1 //lb
 #define sign_lf 1//rf

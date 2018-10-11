@@ -1,4 +1,3 @@
-//#include "motor.hpp"
 #include "config.hpp"
 
 void motordrive(int id,float value){

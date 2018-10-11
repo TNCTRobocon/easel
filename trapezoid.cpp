@@ -1,6 +1,5 @@
-//#include "trapezoid.hpp"
 #include "config.hpp"
-#include <stdio.h>
+
 
 void Trapezoid(void (*func)(float),float max_value,unsigned int delay_time){
 	double value;
