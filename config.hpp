@@ -46,6 +46,7 @@
 #include <stdbool.h>
 #include <iostream>
 #include <sstream>
+#include <signal.h>
 
 #include "controller.hpp"
 #include "motor.hpp"
@@ -53,7 +54,6 @@
 #include "sonic.hpp"
 #include "trapezoid.hpp"
 #include "uart.hpp"
-#include "write.hpp"
 #include "limitswitch.hpp"
 #include "air.hpp"
 
@@ -66,7 +66,4 @@ extern int mcsp;
 extern float dtsp;
 extern float dttire;
 extern bool spflag; //dt:false mc:true
-/*bool btflag{true};//許可:true 禁止:false
-bool aflag,bflag,xflag,yflag{false};//許可:true 禁止:false
-*/
 extern int fd;//game pad file id;
