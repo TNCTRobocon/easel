@@ -22,28 +22,22 @@ void Trapezoid(void (*func)(float),float max_value,unsigned int delay_time){
 	}else{
 		for(value = 0.15;value<0.3;value+=0.0006){
 			(*func)(value);
-			printf("1\n");
 		}
 		for(;value<max_value-0.2;value+=0.0027){
 			(*func)(value);
-			printf("2\n");
 		}
 		for(;value<max_value;value+=0.0006){
 			(*func)(value);
-			printf("3\n");
 		}
 		delay(delay_time);
 		for(;value>max_value-0.2;value-=0.0006){
 			(*func)(value);
-			printf("4\n");
 		}
 		for(;value>0.3;value-=0.0027){
 			(*func)(value);
-			printf("5\n");
 		}
 		for(;value>0.14;value-=0.0006){
 			(*func)(value);
-			printf("6\n");
 		}
 		(*func)(0);
 	}

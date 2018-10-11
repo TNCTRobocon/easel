@@ -1,3 +1,4 @@
+//19.84v
 #include "config.hpp"
 
 int reccon[9];
@@ -14,17 +15,22 @@ int fd;
 void PinSetup();
 
 void sig_catch(int sig){
+	pinMode(sonic_1,OUTPUT);
+	digitalWrite(sonic_1,0);
+	pinMode(sonic_2,OUTPUT);
+	digitalWrite(sonic_2,0);
 	serialPrintf(srid,"sel 33\r");
 	serialPrintf(srid,"clear\r");
 	serialPrintf(srid,"sel 0\r");
 	serialPrintf(srid,"dt 0\r");
 	serialPrintf(srid,"sel 0\r");
 	serialPrintf(srid,"mc 0\r");
-	printf("sig_catch %d\n",sig);
+	printf("all reset\n");
 	exit(1);
 }
 
 int main(){
+	puts("\n/////////////////////////\nleftrobo program start\n/////////////////////////");
 	int i = 0;
 	errno=0;
 	for(i=0;i<9;i++) reccon[i]=0;
@@ -45,14 +51,14 @@ int main(){
 
 	PinSetup();
 	air_clear();
-	if(SIG_ERR == signal(SIGTERM,sig_catch)){
+	if(SIG_ERR == signal(SIGINT,sig_catch)){//SIGTERMに戻す
 		printf("failed to set signal handler\n");
 		exit(1);
 	}
-#if 0
+//#if 0
 	/*robot 左*/
 //#if 0
-/*
+
 	//1.二段テーブルまで移動
 	std::cout << "1.二段テーブルまで移動" << std::endl;
 	delay(500);
@@ -63,7 +69,7 @@ int main(){
 	Stop(0);
 	delay(200);
 	//前進して
-	Trapezoid(Front,0.4,4500); //要調整
+	Trapezoid(Front,0.4,4600); //要調整
 	//止まる
 	Stop(0);
 	delay(100);
@@ -76,6 +82,8 @@ int main(){
 	Front(0.15);
 	//壁に当たったら
 	while(( !get_lim(lim_5) && !get_lim(lim_6) ) || ( !get_lim(lim_7) && !get_lim(lim_8) ));
+	//ちょっと壁に押し付けて
+	delay(100);
 	//止まる
 	Stop(0);
 	delay(100);
@@ -88,7 +96,7 @@ int main(){
 	//二段テーブルに当たったら
 	while(( !get_lim(lim_1) || !get_lim(lim_2) ) && ( !get_lim(lim_3) || !get_lim(lim_4) ));
 	//ちょっと二段テーブルに押し付けて
-	delay(200); //要調整
+	delay(100); //要調整
 	//止まる
 	Stop(0);
 	delay(200);
@@ -117,12 +125,12 @@ int main(){
 
 	//右に進み
 	Right(0.15);
-	delay(4500); //要調整
+	delay(4600); //要調整
 	//止まる
 	Stop(0);
 	delay(400);
 	//エアーで手動を上げる
-	air_up();
+	//air_up();
 	//待つ  //この間に手動は左射出
 	delay(3500); //要調整
 
@@ -139,7 +147,7 @@ int main(){
 
 	//少し左に進み
 	Left(0.15);
-	delay(3000); //要調整
+	delay(3800); //要調整
 	//止まる
 	Stop(0);
 	//待つ  //この間に手動は右射出
@@ -161,12 +169,12 @@ int main(){
 
 	//左に進み
 	Left(0.15);
-	delay(400); //要調整
+	delay(200); //要調整
 	//止まる
 	Stop(0);
 	//この後に手動は振り子、なだれ
-*/
 
+/*
 	while(1){
 		switch(getcon()){
 			case BACK: //リセット
@@ -393,7 +401,7 @@ int main(){
 
 		}
 	}
-	#endif
+	*/
 }
 
 void PinSetup(){
