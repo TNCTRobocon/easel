@@ -69,7 +69,7 @@ int main(){
 	Stop(0);
 	delay(200);
 	//前進して
-	Trapezoid(Front,0.4,4600); //要調整
+	Trapezoid(Front,0.4,4800); //要調整
 	//止まる
 	Stop(0);
 	delay(100);
@@ -130,7 +130,7 @@ int main(){
 	Stop(0);
 	delay(400);
 	//エアーで手動を上げる
-	//air_up();
+	air_up();
 	//待つ  //この間に手動は左射出
 	delay(3500); //要調整
 
