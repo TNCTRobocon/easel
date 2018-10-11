@@ -74,7 +74,7 @@ int main(){
 	Stop(0);
 	delay(100);
 	//左旋回して
-	Trapezoid(TurnLeft,0.4,370); //要調整
+	Trapezoid(TurnLeft,0.4,390); //要調整
 	//止まる
 	Stop(0);
 	delay(100);
@@ -108,7 +108,7 @@ int main(){
 	//二段テーブルから遠ざかるように前進
 	Front(0.15);
 	//ある程度離れたら
-	while(GetSonic(sonic_2)<0.000500); //要調整 100mm程度
+	while(GetSonic(sonic_2)<0.000380); //要調整 100mm程度
 	//止まる
 	Stop(0);
 	delay(100);
