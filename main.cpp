@@ -1,4 +1,4 @@
-//19.84v
+//19.75v
 #include "config.hpp"
 
 int reccon[9];
@@ -125,7 +125,7 @@ int main(){
 
 	//右に進み
 	Right(0.15);
-	delay(4600); //要調整
+	delay(4700); //要調整
 	//止まる
 	Stop(0);
 	delay(400);
