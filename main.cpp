@@ -1,4 +1,4 @@
-//19.71v
+//19.55v
 #include "config.hpp"
 
 int reccon[9];
@@ -69,7 +69,7 @@ int main(){
 	Stop(0);
 	delay(200);
 	//前進して
-	Trapezoid(Front,0.4,4800); //要調整
+	Trapezoid(Front,0.4,5000); //要調整
 	//止まる
 	Stop(0);
 	delay(100);
@@ -125,7 +125,7 @@ int main(){
 
 	//右に進み
 	Right(0.15);
-	delay(4700); //要調整
+	delay(4900); //要調整
 	//止まる
 	Stop(0);
 	delay(400);
@@ -147,7 +147,7 @@ int main(){
 
 	//少し左に進み
 	Left(0.15);
-	delay(3800); //要調整
+	delay(3900); //要調整
 	//止まる
 	Stop(0);
 	//待つ  //この間に手動は右射出
