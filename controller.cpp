@@ -3,7 +3,7 @@
 void deinit_con(){
 		close(fd);
 		puts("controller safity exit");
-		puts("\n/////////////////////////\nleftrobo program finished\n/////////////////////////");
+		puts("\n/////////////////////////\nright_robo program finished\n/////////////////////////");
 }
 
 void setupcon(){
