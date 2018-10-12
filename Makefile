@@ -9,7 +9,7 @@ LDFLAGS ?= -lm -L. -lwiringPi
 CXXFLAGS ?= -std=c++17 -Wall -g -O0 -pipe $(INC)
 SRCS := $(wildcard *.cpp)
 OBJS := $(SRCS:.cpp=.o)
-TARGET := easel
+TARGET := easel_right
 RM = rm
 
 #機能の定義
