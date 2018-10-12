@@ -1,4 +1,4 @@
-//19.55v
+//19.25v
 #include "config.hpp"
 
 int reccon[9];
@@ -26,6 +26,7 @@ void sig_catch(int sig){
 	serialPrintf(srid,"sel 0\r");
 	serialPrintf(srid,"mc 0\r");
 	printf("all reset\n");
+	air_clear();
 	exit(1);
 }
 
@@ -51,7 +52,7 @@ int main(){
 
 	PinSetup();
 	air_clear();
-	if(SIG_ERR == signal(SIGINT,sig_catch)){//SIGTERMに戻す
+	if(SIG_ERR == signal(SIGTERM,sig_catch)){//SIGTERMに戻す
 		printf("failed to set signal handler\n");
 		exit(1);
 	}
@@ -69,12 +70,12 @@ int main(){
 	Stop(0);
 	delay(200);
 	//前進して
-	Trapezoid(Front,0.4,5000); //要調整
+	Trapezoid(Front,0.4,5200); //要調整
 	//止まる
 	Stop(0);
 	delay(100);
 	//左旋回して
-	Trapezoid(TurnLeft,0.4,390); //要調整
+	Trapezoid(TurnLeft,0.4,500); //要調整
 	//止まる
 	Stop(0);
 	delay(100);
@@ -96,7 +97,7 @@ int main(){
 	//二段テーブルに当たったら
 	while(( !get_lim(lim_1) || !get_lim(lim_2) ) && ( !get_lim(lim_3) || !get_lim(lim_4) ));
 	//ちょっと二段テーブルに押し付けて
-	delay(100); //要調整
+	//delay(100); //要調整
 	//止まる
 	Stop(0);
 	delay(200);
@@ -108,7 +109,7 @@ int main(){
 	//二段テーブルから遠ざかるように前進
 	Front(0.15);
 	//ある程度離れたら
-	while(GetSonic(sonic_2)<0.000380); //要調整 100mm程度
+	while(GetSonic(sonic_2)<0.000500); //要調整 100mm程度
 	//止まる
 	Stop(0);
 	delay(100);
@@ -125,14 +126,14 @@ int main(){
 
 	//右に進み
 	Right(0.15);
-	delay(4900); //要調整
+	delay(5200); //要調整
 	//止まる
 	Stop(0);
 	delay(400);
 	//エアーで手動を上げる
 	air_up();
 	//待つ  //この間に手動は左射出
-	delay(3500); //要調整
+	delay(7000); //要調整
 
 	//4.ゼロ点合わせ
 	std::cout << "4.ゼロ点合わせ" << std::endl;
@@ -147,11 +148,11 @@ int main(){
 
 	//少し左に進み
 	Left(0.15);
-	delay(3900); //要調整
+	delay(4200); //要調整
 	//止まる
 	Stop(0);
 	//待つ  //この間に手動は右射出
-	delay(3500); //要調整
+	delay(7000); //要調整
 
 	//6.ゼロ点合わせ
 	std::cout << "6.ゼロ点合わせ" << std::endl;
